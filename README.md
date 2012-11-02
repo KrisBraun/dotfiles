@@ -3,6 +3,13 @@ dotfiles
 
 Personal dev environment
 
+    cd
+    git clone https://github.com/andsens/homeshick.git
+    mkdir -p bin
+    ln -s homeshick/home/.homeshick bin/homesick
+    homesick clone git@github.com:KrisBraun/dotfiles.git
+    homesick symlink dotfiles
+
     apt-get install zsh tmux vim exuberant-ctags
 
     wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
