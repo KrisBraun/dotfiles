@@ -4,11 +4,9 @@ dotfiles
 Personal dev environment
 
     cd
-    git clone https://github.com/andsens/homeshick.git
-    mkdir -p bin
-    ln -s homeshick/home/.homeshick bin/homesick
-    homesick clone git@github.com:KrisBraun/dotfiles.git
-    homesick symlink dotfiles
+    curl -sL https://raw.github.com/andsens/homeshick/master/install.sh | bash
+    ./homeshick clone git@github.com:KrisBraun/dotfiles.git
+    ./homeshick symlink dotfiles
 
     apt-get install zsh tmux vim exuberant-ctags
 
@@ -24,4 +22,5 @@ Personal dev environment
     git clone https://github.com/tpope/vim-fugitive.git
     git clone https://github.com/hail2u/vim-css3-syntax.git
     git clone https://github.com/groenewege/vim-less
+    git clone https://github.com/kchmck/vim-coffee-script.git
     cd

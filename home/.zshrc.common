@@ -8,7 +8,8 @@ EDITOR=/usr/bin/vim
 
 GREP_OPTIONS='--binary-files=without-match --exclude=tags --exclude-dir=target --color'
 
-alias tmux="nice -5 tmux -2"
+alias tmux="tmux -2"
+alias homesick="$HOME/.homeshick"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
