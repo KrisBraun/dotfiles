@@ -1,4 +1,11 @@
 set nocompatible
+
+filetype off                    " force reloading *after* pathogen loaded
+call pathogen#infect()
+call pathogen#helptags()
+filetype plugin indent on       " enable detection, plugins and indenting in one step
+syntax on
+
 set expandtab
 set shiftwidth=2
 set tabstop=8
@@ -16,12 +23,11 @@ set clipboard=unnamedplus
 set mouse=a
 set t_Co=256
 
-call pathogen#infect() 
-
 colorscheme evening
 
 nmap <TAB> :bn
 nmap <S-TAB> :bN
+map ; :
 
 nmap <F8> :TagbarToggle<CR>
 

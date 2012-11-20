@@ -6,7 +6,9 @@ ZSH_THEME="robbyrussell"
 
 EDITOR=/usr/bin/vim
 
-alias tmux="tmux -2"
+GREP_OPTIONS='--binary-files=without-match --exclude=tags --exclude-dir=target --color'
+
+alias tmux="nice -5 tmux -2"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
