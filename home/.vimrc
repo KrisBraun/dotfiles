@@ -48,3 +48,5 @@ let g:tagbar_type_scala = {
 \ }
 
 cabbr <expr> %% expand('%:p:h')
+
+runtime macros/matchit.vim
