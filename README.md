@@ -9,7 +9,7 @@ Personal dev environment
     homeshick clone git@github.com:KrisBraun/dotfiles.git
     homeshick symlink dotfiles
 
-    apt-get install zsh tmux vim exuberant-ctags
+    apt-get install zsh tmux vim-gnome exuberant-ctags
 
     wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
