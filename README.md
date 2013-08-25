@@ -3,10 +3,9 @@ dotfiles
 
 Personal dev environment
 
-    cd
-    curl -sL https://raw.github.com/andsens/homeshick/master/install.sh | bash
-    ./homeshick clone git@github.com:KrisBraun/dotfiles.git
-    ./homeshick symlink dotfiles
+    git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
+    printf '\nalias homeshick="$HOME/.homesick/repos/homeshick/home/.homeshick"' >> $HOME/.bashrc
+    source $HOME/.bashrc
 
     apt-get install zsh tmux vim exuberant-ctags
 
