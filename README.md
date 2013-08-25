@@ -6,8 +6,8 @@ Personal dev environment
     git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
     printf '\nalias homeshick="$HOME/.homesick/repos/homeshick/home/.homeshick"' >> $HOME/.bashrc
     source $HOME/.bashrc
-    homesick clone git@github.com:KrisBraun/dotfiles.git
-    homesick symlink dotfiles
+    homeshick clone git@github.com:KrisBraun/dotfiles.git
+    homeshick symlink dotfiles
 
     apt-get install zsh tmux vim exuberant-ctags
 
