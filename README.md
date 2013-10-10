@@ -3,7 +3,7 @@ dotfiles
 
 Personal dev environment
 
-    sudo apt-get install git xclip zsh tmux vim-gnome exuberant-ctags
+    sudo apt-get install git xclip zsh tmux vim-gnome exuberant-ctags curl
     
     ssh-keygen -t rsa -C "[email]"
     xclip -sel clip < ~/.ssh/id_rsa.pub
