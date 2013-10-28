@@ -28,6 +28,7 @@ Personal dev environment
     git clone https://github.com/hail2u/vim-css3-syntax.git
     git clone https://github.com/groenewege/vim-less
     git clone https://github.com/kchmck/vim-coffee-script.git
+    git clone git@github.com:slim-template/vim-slim.git
     cd
 
 Install Chrome: https://www.google.com/intl/en/chrome/browser/
