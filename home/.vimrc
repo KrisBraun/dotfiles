@@ -50,3 +50,4 @@ let g:tagbar_type_scala = {
 cabbr <expr> %% expand('%:p:h')
 
 au BufRead,BufNewFile *.skim setfiletype slim
+runtime macros/matchit.vim
