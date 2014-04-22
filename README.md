@@ -10,7 +10,7 @@ Personal dev environment
     # Add key: https://github.com/settings/ssh
     
     git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
-    printf '\nalias homeshick="$HOME/.homesick/repos/homeshick/home/.homeshick"' >> $HOME/.bashrc
+    printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.bashrc
     source $HOME/.bashrc
     homeshick clone git@github.com:KrisBraun/dotfiles.git
     homeshick symlink dotfiles
