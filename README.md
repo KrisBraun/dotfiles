@@ -29,6 +29,8 @@ Personal dev environment
     git clone https://github.com/groenewege/vim-less
     git clone https://github.com/kchmck/vim-coffee-script.git
     git clone git@github.com:slim-template/vim-slim.git
+    git clone git://github.com/tpope/vim-rails.git
+    git clone git://github.com/tpope/vim-bundler.git
     cd
 
 Install Chrome: https://www.google.com/intl/en/chrome/browser/
