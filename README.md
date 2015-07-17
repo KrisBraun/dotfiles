@@ -5,6 +5,8 @@ Personal dev environment
 
     sudo apt-get install git xclip zsh tmux vim-gnome exuberant-ctags curl
     
+    chsh -S /bin/zsh
+    
     ssh-keygen -t rsa -C "[email]"
     xclip -sel clip < ~/.ssh/id_rsa.pub
     # Add key: https://github.com/settings/ssh
@@ -17,10 +19,9 @@ Personal dev environment
 
     wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
-    mkdir -p ~/.vim/autoload ~/.vim/bundle; \
-    curl -Sso ~/.vim/autoload/pathogen.vim \
-        https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-
+    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+        curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    
     cd ~/.vim/bundle
     git clone https://github.com/vim-scripts/CSApprox
     git clone https://github.com/ap/vim-css-color.git
