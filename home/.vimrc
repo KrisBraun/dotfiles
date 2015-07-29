@@ -7,10 +7,11 @@ filetype plugin indent on       " enable detection, plugins and indenting in one
 syntax on
 
 set expandtab
-set shiftwidth=2
-set tabstop=8
 set shiftround
+set tabstop=2
 set shiftwidth=2
+autocmd FileType php setlocal shiftwidth=4 tabstop=4
+
 set smarttab
 set autoindent
 set smartindent
@@ -23,6 +24,7 @@ set clipboard=unnamedplus
 set mouse=a
 set t_Co=256
 
+set background=dark
 colorscheme evening
 
 nmap <TAB> :bn
@@ -51,3 +53,8 @@ cabbr <expr> %% expand('%:p:h')
 
 au BufRead,BufNewFile *.skim setfiletype slim
 runtime macros/matchit.vim
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+map <C-n> :NERDTreeToggle<CR>
