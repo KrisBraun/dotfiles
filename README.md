@@ -3,9 +3,9 @@ dotfiles
 
 Personal dev environment
 
-    sudo apt-get install git xclip zsh tmux vim-gnome exuberant-ctags curl
+    sudo apt-get install fish git xclip zsh tmux vim-gnome exuberant-ctags curl
     
-    chsh -S /bin/zsh
+    chsh -s /usr/bin/fish
     
     ssh-keygen -t rsa -C "[email]"
     xclip -sel clip < ~/.ssh/id_rsa.pub
