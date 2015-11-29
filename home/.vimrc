@@ -6,6 +6,8 @@ call pathogen#helptags()
 filetype plugin indent on       " enable detection, plugins and indenting in one step
 syntax on
 
+autocmd BufNewFile,BufRead *.skim setf slim
+
 set expandtab
 set shiftwidth=2
 set tabstop=8
