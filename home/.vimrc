@@ -27,7 +27,11 @@ set hlsearch
 set hidden
 set ignorecase
 set smartcase
-set clipboard=unnamed
+if has("unnamedplus")
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
 set mouse=a
 set t_Co=256
 
