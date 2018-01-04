@@ -2,6 +2,14 @@ set nocompatible
 
 set shell=/bin/bash
 
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 filetype off                    " force reloading *after* pathogen loaded
 call pathogen#infect()
 call pathogen#helptags()
@@ -11,6 +19,9 @@ syntax on
 autocmd BufNewFile,BufRead *.skim setf slim
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+set dir=$HOME/.vim/swap
+if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
 
 set path=.,**
 set expandtab
@@ -68,7 +79,6 @@ au BufRead,BufNewFile *.skim setfiletype slim
 runtime macros/matchit.vim
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 map <C-n> :NERDTreeToggle<CR>
 
@@ -79,3 +89,5 @@ hi MatchParen cterm=reverse ctermbg=black ctermfg=110
 set backspace=2
 
 set wildignore+=*/vendor/*,*.swp,*/public/*,*/tmp/*
+
+cabbr <expr> %% expand('%:p:h')

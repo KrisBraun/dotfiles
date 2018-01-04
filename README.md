@@ -2,6 +2,8 @@
 
 ## Install:
 - https://www.iterm2.com/downloads.html
+  - iTerm2 menu -> Install Shell Integration
+  - iTerm2 menu -> Preferences -> General -> Load preferences from a custom folder or URL = `$HOME/.iterm2`
 - https://www.spectacleapp.com/
 - https://www.google.com/intl/en/chrome/browser/
 - https://slack.com/
@@ -11,20 +13,16 @@
 ## Run:
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     
-    brew install fish
+    brew install fish git stow neovim node
     
     chsh -s `which fish`
+
+    stow fish git iterm2 tmux vim
     
     ssh-keygen -t rsa -C "[email]"
-    xclip -sel clip < ~/.ssh/id_rsa.pub
+    pbcopy < ~/.ssh/id_rsa.pub
     # Add key: https://github.com/settings/ssh
     
-    git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
-    printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.bashrc
-    source $HOME/.bashrc
-    homeshick clone git@github.com:KrisBraun/dotfiles.git
-    homeshick symlink dotfiles
-
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     
@@ -40,3 +38,6 @@
     git clone git://github.com/tpope/vim-bundler.git
     git clone https://github.com/scrooloose/nerdtree.git
     cd
+
+## TODO:
+- [ ] neovim plugin manager
