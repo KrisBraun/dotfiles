@@ -1,11 +1,19 @@
-dotfiles
-========
+# Personal dev environment
 
-Personal dev environment
+## Install:
+- https://www.iterm2.com/downloads.html
+- https://www.spectacleapp.com/
+- https://www.google.com/intl/en/chrome/browser/
+- https://slack.com/
+- https://simplenote.com/
+- https://www.spotify.com/ca-en/download/mac/
 
-    sudo apt-get install fish git xclip zsh tmux vim-gnome exuberant-ctags curl
+## Run:
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     
-    chsh -s /usr/bin/fish
+    brew install fish
+    
+    chsh -s `which fish`
     
     ssh-keygen -t rsa -C "[email]"
     xclip -sel clip < ~/.ssh/id_rsa.pub
@@ -16,8 +24,6 @@ Personal dev environment
     source $HOME/.bashrc
     homeshick clone git@github.com:KrisBraun/dotfiles.git
     homeshick symlink dotfiles
-
-    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
@@ -34,10 +40,3 @@ Personal dev environment
     git clone git://github.com/tpope/vim-bundler.git
     git clone https://github.com/scrooloose/nerdtree.git
     cd
-
-### Install:
-- https://www.spectacleapp.com/
-- https://www.google.com/intl/en/chrome/browser/
-- https://slack.com/
-- https://simplenote.com/
-- https://www.spotify.com/ca-en/download/mac/
