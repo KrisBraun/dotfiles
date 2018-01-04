@@ -1,9 +1,6 @@
 function vi
   nvim $argv
 end
-function --wraps=grep grep
-  command grep --color=auto -I $argv
-end
 function composer
   php ~/bin/composer.phar $argv
 end
