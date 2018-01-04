@@ -13,11 +13,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/deol.nvim', { 'rev': 'a1b5108fd' })
+  call dein#add('ctrlpvim/ctrlp.vim')
 
   " Required:
   call dein#end()
@@ -72,3 +68,5 @@ hi MatchParen cterm=reverse ctermbg=black ctermfg=110
 set backspace=2
 
 set wildignore+=*/vendor/*,*.swp,*/public/*,*/tmp/*
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']

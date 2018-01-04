@@ -18,6 +18,10 @@
     chsh -s `which fish`
 
     stow fish git iterm2 tmux vim
+
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein-install.sh
+    sh ./dein-install.sh $HOME/.cache/dein
+    rm dein-install.sh
     
     ssh-keygen -t rsa -C "[email]"
     pbcopy < ~/.ssh/id_rsa.pub
