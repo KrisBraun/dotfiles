@@ -35,4 +35,9 @@ Personal dev environment
     git clone https://github.com/scrooloose/nerdtree.git
     cd
 
-Install Chrome: https://www.google.com/intl/en/chrome/browser/
+### Install:
+- https://www.spectacleapp.com/
+- https://www.google.com/intl/en/chrome/browser/
+- https://slack.com/
+- https://simplenote.com/
+- https://www.spotify.com/ca-en/download/mac/
