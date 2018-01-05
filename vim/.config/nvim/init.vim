@@ -4,11 +4,16 @@ endif
 
 set shell=/bin/bash
 
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-let g:airline_theme='oceanicnext'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#syntastic#enabled = 1
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['javascript/eslint']
+let g:deoplete#enable_at_startup = 1
 
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('$HOME/.cache/dein')
@@ -17,14 +22,17 @@ if dein#load_state('$HOME/.cache/dein')
 
   " Add or remove your plugins here:
   call dein#add('ctrlpvim/ctrlp.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('vim-syntastic/syntastic')
   call dein#add('ap/vim-css-color.git')
   call dein#add('tpope/vim-fugitive.git')
   call dein#add('tpope/vim-commentary.git')
-  call dein#add('vim-airline/vim-airline')
   call dein#add('mhartington/oceanic-next')
   call dein#add('ryanoasis/vim-devicons')
   call dein#add('sheerun/vim-polyglot')
   call dein#add('morhetz/gruvbox')
+  call dein#add('tpope/vim-unimpaired')
+  call dein#add('vim-airline/vim-airline')
 
   call dein#end()
   call dein#save_state()
@@ -38,6 +46,7 @@ if dein#check_install()
   call dein#install()
 endif
 
+set t_Co=256
 if (has("termguicolors"))
  set termguicolors
 endif
@@ -66,7 +75,6 @@ else
   set clipboard=unnamed
 endif
 set mouse=a
-set t_Co=256
 
 nmap <TAB> :bn
 nmap <S-TAB> :bN
@@ -74,13 +82,15 @@ nmap <C-TAB> :cnext
 map ; :
 map <C-S> :execute "vimgrep /" . expand("<cword>") . "/ **" <Bar> cw<CR>
 
-set cursorline
-hi Normal cterm=none ctermbg=235
-hi CursorLine cterm=none ctermbg=233
-hi MatchParen cterm=reverse ctermbg=black ctermfg=110
 set backspace=2
 set encoding=utf8
 
 set wildignore+=*/vendor/*,*.swp,*/public/*,*/tmp/*
 
 set background=dark
+
+hi Visual guibg=#3c3836 gui=none
+set guicursor=n-v-c:hor20,i-ci:ver25,r-cr:hor20
+
+autocmd BufEnter * set cursorline
+autocmd BufLeave * set nocursorline

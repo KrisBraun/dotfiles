@@ -2,7 +2,8 @@
 
 ## Run:
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install fish git stow neovim node
+    brew install fish git stow neovim node python3
+    pip3 install neovim
 
     git clone https://github.com/ryanoasis/nerd-fonts
     cd nerd-fonts/
