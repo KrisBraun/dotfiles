@@ -4,23 +4,30 @@ endif
 
 set shell=/bin/bash
 
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+let g:airline_theme='oceanicnext'
+let g:airline_powerline_fonts = 1
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('$HOME/.cache/dein')
   call dein#begin('$HOME/.cache/dein')
-
-  " Let dein manage dein
-  " Required:
   call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
   call dein#add('ctrlpvim/ctrlp.vim')
+  call dein#add('ap/vim-css-color.git')
+  call dein#add('tpope/vim-fugitive.git')
+  call dein#add('tpope/vim-commentary.git')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('mhartington/oceanic-next')
+  call dein#add('ryanoasis/vim-devicons')
 
-  " Required:
   call dein#end()
   call dein#save_state()
 endif
 
-" Required:
 filetype plugin indent on
 syntax enable
 
@@ -28,6 +35,13 @@ syntax enable
 if dein#check_install()
   call dein#install()
 endif
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+set background=dark
+colorscheme OceanicNext
 
 set path=.,**
 set expandtab
@@ -52,9 +66,6 @@ endif
 set mouse=a
 set t_Co=256
 
-set background=dark
-colorscheme evening
-
 nmap <TAB> :bn
 nmap <S-TAB> :bN
 nmap <C-TAB> :cnext
@@ -66,7 +77,6 @@ hi Normal cterm=none ctermbg=235
 hi CursorLine cterm=none ctermbg=233
 hi MatchParen cterm=reverse ctermbg=black ctermfg=110
 set backspace=2
+set encoding=utf8
 
 set wildignore+=*/vendor/*,*.swp,*/public/*,*/tmp/*
-
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']

@@ -12,8 +12,14 @@
 
 ## Run:
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    
     brew install fish git stow neovim node
+
+    wget -O ~/.iterm2/Oceanic-Next.itermcolors https://raw.githubusercontent.com/mhartington/oceanic-next-iterm/master/Oceanic-Next.itermcolors
+
+    git clone https://github.com/ryanoasis/nerd-fonts
+    cd nerd-fonts/
+    fontforge -script font-patcher --complete --progressbars --extension dfont /System/Library/Fonts/Monaco.dfont
+    sudo cp Monaco\ Nerd\ Font\ Complete.dfont /Library/Fonts/
     
     chsh -s `which fish`
 
