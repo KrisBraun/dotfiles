@@ -23,6 +23,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('vim-airline/vim-airline')
   call dein#add('mhartington/oceanic-next')
   call dein#add('ryanoasis/vim-devicons')
+  call dein#add('sheerun/vim-polyglot')
+  call dein#add('morhetz/gruvbox')
 
   call dein#end()
   call dein#save_state()
@@ -40,8 +42,8 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-set background=dark
-colorscheme OceanicNext
+" colorscheme OceanicNext
+colorscheme gruvbox
 
 set path=.,**
 set expandtab
@@ -80,3 +82,5 @@ set backspace=2
 set encoding=utf8
 
 set wildignore+=*/vendor/*,*.swp,*/public/*,*/tmp/*
+
+set background=dark
