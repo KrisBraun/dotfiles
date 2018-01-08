@@ -7,7 +7,6 @@ set shell=/bin/bash
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -21,7 +20,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  call dein#add('ctrlpvim/ctrlp.vim')
+  call dein#add('/usr/local/opt/fzf')
+  call dein#add('junegunn/fzf.vim')
   call dein#add('ludovicchabant/vim-gutentags')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('vim-syntastic/syntastic')
@@ -85,6 +85,8 @@ nmap <S-TAB> :bN
 nmap <C-TAB> :cnext
 map ; :
 map <C-S> :execute "vimgrep /" . expand("<cword>") . "/ **" <Bar> cw<CR>
+
+nnoremap <silent> <c-p> :Files<CR>
 
 set backspace=2
 set encoding=utf8
