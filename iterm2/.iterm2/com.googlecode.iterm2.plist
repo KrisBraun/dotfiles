@@ -621,7 +621,7 @@
 	<key>DoubleClickPerformsSmartSelection</key>
 	<true/>
 	<key>FocusFollowsMouse</key>
-	<true/>
+	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000</key>
@@ -794,7 +794,7 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>-597 939 606 456 -866 800 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>315 1798 918 381 -866 800 2560 1417 </string>
+	<string>315 1706 796 473 -866 800 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>-865 800 570 1417 -866 800 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
