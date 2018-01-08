@@ -22,6 +22,7 @@ if dein#load_state('$HOME/.cache/dein')
 
   " Add or remove your plugins here:
   call dein#add('ctrlpvim/ctrlp.vim')
+  call dein#add('ludovicchabant/vim-gutentags')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('vim-syntastic/syntastic')
   call dein#add('ap/vim-css-color.git')
