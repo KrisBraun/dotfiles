@@ -29,7 +29,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-fugitive.git')
   call dein#add('idanarye/vim-merginal')
   call dein#add('tpope/vim-commentary.git')
-  call dein#add('mhartington/oceanic-next')
   call dein#add('ryanoasis/vim-devicons')
   call dein#add('sheerun/vim-polyglot')
   call dein#add('morhetz/gruvbox')
@@ -77,6 +76,8 @@ else
   set clipboard=unnamed
 endif
 set mouse=a
+
+set completeopt+=noinsert
 
 nmap <TAB> :bn
 nmap <S-TAB> :bN
