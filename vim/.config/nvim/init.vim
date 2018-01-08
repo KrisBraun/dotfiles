@@ -34,6 +34,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('morhetz/gruvbox')
   call dein#add('tpope/vim-unimpaired')
   call dein#add('vim-airline/vim-airline')
+  call dein#add('tpope/vim-surround')
 
   call dein#end()
   call dein#save_state()
