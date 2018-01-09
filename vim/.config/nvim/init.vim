@@ -13,6 +13,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['javascript/eslint']
 let g:deoplete#enable_at_startup = 1
+let g:jsx_ext_required = 0
 
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('$HOME/.cache/dein')
@@ -22,6 +23,8 @@ if dein#load_state('$HOME/.cache/dein')
   " Add or remove your plugins here:
   call dein#add('/usr/local/opt/fzf')
   call dein#add('junegunn/fzf.vim')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('mxw/vim-jsx')
   call dein#add('ludovicchabant/vim-gutentags')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('vim-syntastic/syntastic')
@@ -92,6 +95,8 @@ set backspace=2
 set encoding=utf8
 
 set wildignore+=*/vendor/*,*.swp,*/public/*,*/tmp/*
+
+set undofile
 
 set background=dark
 
