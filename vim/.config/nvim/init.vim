@@ -74,6 +74,7 @@ set hlsearch
 set hidden
 set ignorecase
 set smartcase
+set wildignorecase
 if has("unnamedplus")
   set clipboard=unnamedplus
 else
