@@ -2,7 +2,7 @@
 
 ## Run:
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install fish git stow neovim node python3 fzf
+    brew install fish git stow neovim node python3 fzf the_silver_searcher
     brew install --HEAD universal-ctags/universal-ctags/universal-ctags
     pip3 install neovim
 

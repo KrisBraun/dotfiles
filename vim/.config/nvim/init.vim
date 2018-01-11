@@ -91,6 +91,7 @@ map ; :
 map <C-S> :execute "vimgrep /" . expand("<cword>") . "/ **" <Bar> cw<CR>
 
 nnoremap <silent> <c-p> :Files<CR>
+nnoremap <silent> <c-s> "zyiw:exe "Ag ".@z.""<CR>
 
 set backspace=2
 set encoding=utf8
