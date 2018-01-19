@@ -88,7 +88,6 @@ nmap <TAB> :bn
 nmap <S-TAB> :bN
 nmap <C-TAB> :cnext
 map ; :
-map <C-S> :execute "vimgrep /" . expand("<cword>") . "/ **" <Bar> cw<CR>
 
 nnoremap <silent> <c-p> :Files<CR>
 nnoremap <silent> <c-s> "zyiw:exe "Ag ".@z.""<CR>
