@@ -8,6 +8,12 @@ function homestead
   pushd ~/Homestead; and vagrant $argv; popd
 end
 
+if not functions -q fisher
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    fish -c fisher
+end
+
 # Set iTerm2 titlebar colour
 echo -n -e "\033]6;1;bg;red;brightness;60\a"
 echo -n -e "\033]6;1;bg;green;brightness;56\a"
