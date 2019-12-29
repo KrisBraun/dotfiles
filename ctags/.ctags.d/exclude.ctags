@@ -1,9 +1,12 @@
 --exclude=.*
 --exclude=log
 --exclude=tmp
+--exclude=build
 --exclude=node_modules
 --exclude=bower_components
 --exclude=package.json
 --exclude=package-lock.json
 --exclude=android
 --exclude=ios
+--exclude=*.json
+--exclude=site/public

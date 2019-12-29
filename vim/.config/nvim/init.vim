@@ -89,7 +89,7 @@ nmap <S-TAB> :bN
 nmap <C-TAB> :cnext
 map ; :
 
-nnoremap <silent> <c-p> :Files<CR>
+nnoremap <silent> <c-p> :GFiles<CR>
 nnoremap <silent> <c-s> "zyiw:exe "Ag ".@z.""<CR>
 
 set backspace=2
@@ -106,3 +106,5 @@ set guicursor=n-v-c:hor20,i-ci:ver25,r-cr:hor20
 
 autocmd BufEnter * set cursorline
 autocmd BufLeave * set nocursorline
+
+let g:gutentags_ctags_extra_args = ['-G']

@@ -27,7 +27,7 @@
     sudo echo /usr/local/bin/fish >> /etc/shells
     chsh -s `which fish`
 
-    stow fish git iterm2 tmux vim
+    stow fish git iterm2 tmux vim ctags
 
     git config --global core.excludesfile ~/.gitignore_global
 
