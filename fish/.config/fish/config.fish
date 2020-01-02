@@ -21,3 +21,7 @@ echo -n -e "\033]6;1;bg;blue;brightness;54\a"
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 test -e {$HOME}/.config/fish/config.fish.local ; and source {$HOME}/.config/fish/config.fish.local
+
+for snippet in conf.d/*
+    source $snippet
+end

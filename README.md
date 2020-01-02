@@ -5,7 +5,6 @@
   - 1password
   - Todoist
   - SimpleNote
-- https://fontforge.org/en-US/downloads/
 - https://www.iterm2.com/downloads.html
   - iTerm2 menu -> Install Shell Integration
   - iTerm2 menu -> Preferences -> General -> Load preferences from a custom folder or URL = `$HOME/.iterm2`
@@ -16,6 +15,15 @@
 - https://itunes.apple.com/us/app/irvue/id1039633667?mt=12
 
 ## Run:
+    ssh-keygen -t rsa -C "[email]"
+    pbcopy < ~/.ssh/id_rsa.pub
+    # Add key: https://github.com/settings/ssh
+
+    git clone git@github.com:KrisBraun/dotfiles.git
+    cd dotfiles
+    stow fish git iterm2 tmux vim ctags
+    cd
+
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew install fish git stow neovim node python3 fzf the_silver_searcher
     brew install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -27,7 +35,8 @@
     sudo echo /usr/local/bin/fish >> /etc/shells
     chsh -s `which fish`
 
-    stow fish git iterm2 tmux vim ctags
+    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+
 
     git config --global core.excludesfile ~/.gitignore_global
 
