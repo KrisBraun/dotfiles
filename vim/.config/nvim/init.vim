@@ -4,16 +4,21 @@ endif
 
 set shell=/bin/bash
 
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/usr/local/bin/python'
+
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['javascript/eslint']
+" let g:airline#extensions#syntastic#enabled = 1
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['javascript/eslint']
 let g:deoplete#enable_at_startup = 1
 let g:jsx_ext_required = 0
+
+let $FZF_DEFAULT_COMMAND = 'fd --type f'
 
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('$HOME/.cache/dein')
@@ -27,7 +32,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('mxw/vim-jsx')
   call dein#add('ludovicchabant/vim-gutentags')
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('vim-syntastic/syntastic')
+  " call dein#add('vim-syntastic/syntastic')
   call dein#add('ap/vim-css-color.git')
   call dein#add('tpope/vim-fugitive.git')
   call dein#add('idanarye/vim-merginal')
@@ -38,9 +43,16 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-unimpaired')
   call dein#add('vim-airline/vim-airline')
   call dein#add('tpope/vim-surround')
+  call dein#add('prettier/vim-prettier')
+  call dein#add('w0rp/ale')
+
+  call dein#add('HerringtonDarkholme/yats')
+  call dein#add('maxmellon/vim-jsx-pretty')
 
   call dein#end()
   call dein#save_state()
+
+  autocmd BufEnter * hi CursorLine guibg=#1d2021 gui=none
 endif
 
 filetype plugin indent on
@@ -101,10 +113,22 @@ set undofile
 
 set background=dark
 
-hi Visual guibg=#3c3836 gui=none
+" Load local config
+set exrc
+set secure
+
+hi Visual guibg=#1d2021 gui=none
 set guicursor=n-v-c:hor20,i-ci:ver25,r-cr:hor20
 
-autocmd BufEnter * set cursorline
-autocmd BufLeave * set nocursorline
+" autocmd BufEnter * set cursorline
+" autocmd BufLeave * set nocursorline
+
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
+
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue Prettier
 
 let g:gutentags_ctags_extra_args = ['-G']
