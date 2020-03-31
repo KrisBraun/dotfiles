@@ -9,6 +9,7 @@
   - Irvue
 - https://www.google.com/intl/en/chrome/browser/
 - https://rectangleapp.com/
+  - Set Preferences -> Settings -> Launch on login
 - https://www.iterm2.com/downloads.html
   - iTerm2 menu -> Install Shell Integration
   - iTerm2 menu -> Preferences -> General -> Load preferences from a custom folder or URL = `$HOME/.iterm2`
