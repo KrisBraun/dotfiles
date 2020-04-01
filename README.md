@@ -38,6 +38,8 @@
 
     curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
+    git config --global user.email "me@example.com"
+    git config --global user.name "Kris Braun"
     git config --global core.excludesfile ~/.gitignore_global
 
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein-install.sh
