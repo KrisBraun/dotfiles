@@ -1,4 +1,3 @@
---exclude=.*
 --exclude=log
 --exclude=tmp
 --exclude=build
