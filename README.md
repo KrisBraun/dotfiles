@@ -41,6 +41,7 @@
     git config --global user.email "me@example.com"
     git config --global user.name "Kris Braun"
     git config --global core.excludesfile ~/.gitignore_global
+    git config --global push.default current
 
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein-install.sh
     sh ./dein-install.sh $HOME/.cache/dein
