@@ -1,10 +1,7 @@
-# Personal dev environment
-
 ## Install:
 - App Store
   - 1password
   - Slack
-  - Todoist
   - SimpleNote
   - Irvue
 - https://www.google.com/intl/en/chrome/browser/
@@ -13,12 +10,11 @@
 - https://www.iterm2.com/downloads.html
   - iTerm2 menu -> Install Shell Integration
   - iTerm2 menu -> Preferences -> General -> Load preferences from a custom folder or URL = `$HOME/.iterm2`
-- https://www.spotify.com/ca-en/download/mac/
 
 ## Run:
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew install fish git stow neovim node python3 fzf the_silver_searcher
-    brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+    brew install fish git stow neovim node python3 lua-language-server
+    npm install -g typescript typescript-language-server
     pip3 install neovim
     
     ssh-keygen -t rsa -C "[email]"
@@ -43,6 +39,4 @@
     git config --global core.excludesfile ~/.gitignore_global
     git config --global push.default current
 
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein-install.sh
-    sh ./dein-install.sh $HOME/.cache/dein
-    rm dein-install.sh
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
