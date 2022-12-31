@@ -1,5 +1,7 @@
 vim.opt.shell = '/bin/bash'
 
+vim.g.mapleader = ','
+
 vim.go.python3_host_prog = '/usr/local/bin/python3'
 
 vim.go.airline_theme = 'sonokai'
@@ -40,14 +42,6 @@ end
 vim.opt.mouse = 'a'
 
 vim.opt.completeopt:append({noinsert = true})
-
-vim.keymap.set('n', '<TAB>', ':bn<cr>')
-vim.keymap.set('n', '<S-TAB>', ':bN<cr>')
-vim.keymap.set('n', '<C-TAB>', ':cnext<cr>')
-vim.keymap.set('n', ';', ':')
-
--- nnoremap <silent> <c-p> :GFiles<CR>
--- nnoremap <silent> <c-s> "zyiw:exe "Ag ".@z.""<CR>
 
 -- vim.opt.backspace = 2
 vim.opt.encoding = 'utf8'

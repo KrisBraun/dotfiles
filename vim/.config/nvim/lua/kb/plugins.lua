@@ -6,20 +6,46 @@ require('packer').startup(function(use)
   use 'ellisonleao/gruvbox.nvim'
   use 'sainnhe/edge'
   use 'sainnhe/sonokai'
-  use 'norcalli/nvim-colorizer.lua'
+  use {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup {}
+    end
+  }
 
   -- Language
   use 'neovim/nvim-lspconfig'
   use 'ryanoasis/vim-devicons'
   use 'nvim-treesitter/nvim-treesitter' --, {'hook_post_update': 'TSUpdate'}
 
-  use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
+  use({
+    "windwp/nvim-autopairs", -- auto close sybmols
+    config = function()
+      require("nvim-autopairs").setup({
+        map_cr = true, -- send closing symbol to its own line
+        check_ts = true, -- use treesitter
+      })
+    end,
+    disable_filetype = { "TelescopePrompt", "fugitive" },
+  })
+  use {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require("nvim-ts-autotag").setup {}
+    end
+  }
 
   use 'Shougo/deoplete.nvim'
 
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'MunifTanjim/prettier.nvim'
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
 
   -- Git
   use 'tpope/vim-fugitive'
@@ -71,10 +97,6 @@ require('lspconfig')['tsserver'].setup{
   on_attach = on_attach,
   filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
 }
-
-require('nvim-ts-autotag').setup()
-require("nvim-autopairs").setup {}
-require'colorizer'.setup()
 
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
