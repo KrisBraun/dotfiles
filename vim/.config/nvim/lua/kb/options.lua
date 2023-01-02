@@ -1,23 +1,37 @@
 vim.opt.shell = '/bin/bash'
 
-vim.g.mapleader = ','
+-- Set highlight on search
+vim.o.hlsearch = false
 
-vim.go.python3_host_prog = '/usr/local/bin/python3'
+-- Make line numbers default
+vim.wo.number = true
 
-vim.go.airline_theme = 'sonokai'
-vim.go.airline_powerline_fonts = 1
+-- Enable mouse mode
+vim.o.mouse = 'a'
 
-vim.go.jsx_ext_required = 0
+-- Enable break indent
+vim.o.breakindent = true
 
--- filetype plugin indent on
--- syntax enable
+-- Save undo history
+vim.o.undofile = true
 
---vim.opt.t_Co = 256
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'
+
+-- Set colorscheme
 if vim.fn.has('termguicolors') == 1 then
  vim.opt.termguicolors = true
 end
 
-vim.go.sonokai_style = 'shusia'
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
+vim.go.jsx_ext_required = 0
 
 vim.opt.path = '.,**'
 vim.opt.expandtab = true
@@ -29,17 +43,13 @@ vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.incsearch = true
-vim.opt.hlsearch = true
 vim.opt.hidden = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
 vim.opt.wildignorecase = true
 if vim.fn.has('unnamedplus') == 1 then
   vim.opt.clipboard = 'unnamedplus'
 else
   vim.opt.clipboard = 'unnamed'
 end
-vim.opt.mouse = 'a'
 
 vim.opt.completeopt:append({noinsert = true})
 
@@ -48,15 +58,16 @@ vim.opt.encoding = 'utf8'
 
 -- vim.opt.wildignore+=*/vendor/*,*.swp,*/public/*,*/tmp/*
 
-vim.opt.undofile = true
-
 vim.opt.background = 'dark'
 
 -- Load local config
 vim.opt.exrc = true
 vim.opt.secure = true
 
--- hi Visual guibg=#1d2021 gui=none
 vim.opt.guicursor = 'n-v-c:hor20,i-ci:ver25,r-cr:hor20'
 
--- vim.go.gutentags_ctags_extra_args = ['-G']
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
+
+vim.opt.hlsearch = true
+vim.cmd [[highlight Search guibg=guibg guifg=guifg gui=underline]]
