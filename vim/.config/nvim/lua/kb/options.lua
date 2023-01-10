@@ -70,4 +70,4 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 
 vim.opt.hlsearch = true
-vim.cmd [[highlight Search guibg=guibg guifg=guifg gui=underline]]
+vim.cmd([[highlight Search guibg=guibg guifg=guifg gui=bold,underline]])

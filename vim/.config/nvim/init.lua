@@ -11,6 +11,14 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
 
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeoutlen = 300
+      require("which-key").setup { }
+    end
+  }
+
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
@@ -106,14 +114,14 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
-require('kb.options')
-require('kb.map')
-require('kb.auto')
-
 require('onedark').setup {
   style = 'warm',
 }
 require('onedark').load()
+
+require('kb.options')
+require('kb.map')
+require('kb.auto')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
