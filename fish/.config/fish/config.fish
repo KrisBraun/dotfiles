@@ -25,3 +25,5 @@ test -e {$HOME}/.config/fish/config.fish.local ; and source {$HOME}/.config/fish
 for snippet in conf.d/*
     source $snippet
 end
+
+source /usr/local/opt/asdf/libexec/asdf.fish

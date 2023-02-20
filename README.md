@@ -23,7 +23,7 @@
 
     git clone git@github.com:KrisBraun/dotfiles.git
     cd dotfiles
-    stow fish git iterm2 tmux vim ctags
+    stow fish git iterm2 vim
     cd
 
     brew tap homebrew/cask-fonts
