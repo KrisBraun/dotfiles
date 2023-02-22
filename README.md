@@ -1,19 +1,12 @@
 ## Install:
-- App Store
-  - 1password
-  - Slack
-  - SimpleNote
   - Irvue
-- https://www.google.com/intl/en/chrome/browser/
-- https://rectangleapp.com/
-  - Set Preferences -> Settings -> Launch on login
-- https://www.iterm2.com/downloads.html
-  - iTerm2 menu -> Install Shell Integration
-  - iTerm2 menu -> Preferences -> General -> Load preferences from a custom folder or URL = `$HOME/.iterm2`
 
 ## Run:
+    defaults write com.apple.dock autohide 1
+
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew install fish git stow neovim node python3 lua-language-server
+    brew install amethyst kitty fish git stow neovim node python3 lua-language-server ripgrep
+    brew install --cask google-chrome slack 1password simplenote
     npm install -g typescript typescript-language-server
     pip3 install neovim
     
