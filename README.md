@@ -2,9 +2,8 @@
     defaults write com.apple.dock autohide 1
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew install amethyst kitty fish git stow neovim node python3 lua-language-server ripgrep mas
-    brew install --cask google-chrome slack 1password alfred simplenote
-    mas luck irvue
+    brew bundle install --file ~/dotfiles/Brewfile
+
     npm install -g typescript typescript-language-server
     pip3 install neovim
     
