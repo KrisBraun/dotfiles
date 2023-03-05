@@ -22,3 +22,6 @@ git config --global user.email "$1"
 git config --global user.name "Kris Braun"
 git config --global core.excludesfile ~/.gitignore_global
 git config --global push.default current
+
+mkdir -p $HOME/Documents/Screenshots
+defaults write com.apple.screencapture location $HOME/Documents/Screenshots
