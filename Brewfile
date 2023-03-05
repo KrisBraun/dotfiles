@@ -35,6 +35,8 @@ brew "the_silver_searcher"
 brew "wget"
 brew "wimlib"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+cask "1password"
+cask "1password-cli"
 cask "adoptopenjdk11"
 cask "alfred"
 cask "amethyst"
@@ -44,7 +46,6 @@ cask "kitty"
 cask "notion"
 cask "todoist"
 cask "zoom"
-mas "1Password 7", id: 1333542190
 mas "Be Focused", id: 973134470
 mas "Be Focused Pro", id: 961632517
 mas "Deckset", id: 847496013
