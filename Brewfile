@@ -42,6 +42,7 @@ cask "google-drive"
 cask "kitty"
 cask "notion"
 cask "todoist"
+cask "zoom"
 mas "1Password 7", id: 1333542190
 mas "Be Focused", id: 973134470
 mas "Be Focused Pro", id: 961632517
