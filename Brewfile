@@ -37,8 +37,11 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "adoptopenjdk11"
 cask "alfred"
 cask "amethyst"
-cask "font-inconsolata-nerd-font"
+cask "font-fira-code"
+cask "google-drive"
 cask "kitty"
+cask "notion"
+cask "todoist"
 mas "1Password 7", id: 1333542190
 mas "Be Focused", id: 973134470
 mas "Be Focused Pro", id: 961632517
@@ -48,6 +51,5 @@ mas "Irvue", id: 1039633667
 mas "Mini Calendar", id: 1088779979
 mas "Simplenote", id: 692867256
 mas "Slack", id: 803453959
-mas "Todoist", id: 585829637
 mas "Webcam Settings", id: 533696630
 mas "Xcode", id: 497799835
