@@ -6,7 +6,7 @@ if [ -z "$1" ]
     exit 1
 fi
 
-stow -d ~/dotfiles mackup.cfg fish git nvim
+stow -d ~/dotfiles mackup.cfg fish git nvim kitty
 
 mackup restore
 
