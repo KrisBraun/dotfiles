@@ -1,5 +1,13 @@
-function vi
-  nvim $argv
+if test (which nvim)
+    function vi
+        nvim $argv
+    end
+end
+
+if test -e /usr/local/bin/brew
+    eval (/usr/local/bin/brew shellenv)
+else
+    eval (/opt/homebrew/bin/brew shellenv)
 end
 
 if not functions -q fisher
