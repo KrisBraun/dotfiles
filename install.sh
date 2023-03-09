@@ -2,6 +2,12 @@
 
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+# git and clone this repo
+brew install git
+git -C ~ clone git@github.com:KrisBraun/dotfiles.git
+
+# Install all brew
 brew bundle install --file ~/dotfiles/Brewfile
 
 # NVIM Packer
