@@ -15,7 +15,7 @@ sudo sh -c 'echo `which fish` >> /etc/shells'
 chsh -s `which fish`
 
 # SSH
-ssh-keygen -t rsa -C "[email]"
+ssh-keygen -t rsa -C "$1"
 pbcopy < ~/.ssh/id_rsa.pub
 echo "Paste key at https://github.com/settings/ssh"
 
