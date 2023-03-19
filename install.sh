@@ -21,7 +21,7 @@ $HOMEBREW_PREFIX/brew bundle install --file ~/dotfiles/Brewfile
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # Fisher
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
 # Node
 npm install -g typescript typescript-language-server
