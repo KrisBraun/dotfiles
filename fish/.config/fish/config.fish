@@ -22,4 +22,9 @@ for snippet in conf.d/*
     source $snippet
 end
 
-source /usr/local/opt/asdf/libexec/asdf.fish
+if test -e /usr/local/opt/asdf/libexec/asdf.fish
+	source /usr/local/opt/asdf/libexec/asdf.fish
+end
+if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
+	source /opt/homebrew/opt/asdf/libexec/asdf.fish
+end
