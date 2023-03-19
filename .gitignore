@@ -3,3 +3,4 @@ tags
 fish/.config/fish/functions/
 fish/.config/fish/completions/
 iterm2/.iterm2
+Brewfile.lock.json
