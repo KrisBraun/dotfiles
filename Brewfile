@@ -1,4 +1,3 @@
-tap "adoptopenjdk/openjdk"
 tap "github/gh"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -37,7 +36,6 @@ brew "wimlib"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "1password"
 cask "1password-cli"
-cask "adoptopenjdk11"
 cask "alfred"
 cask "amethyst"
 cask "font-fira-code"
