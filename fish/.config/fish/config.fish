@@ -1,9 +1,3 @@
-if test (which nvim)
-    function vi
-        nvim $argv
-    end
-end
-
 if test -e /usr/local/bin/brew
     eval (/usr/local/bin/brew shellenv)
 else
@@ -17,6 +11,12 @@ if not functions -q fisher
 end
 
 test -e {$HOME}/.config/fish/config.fish.local ; and source {$HOME}/.config/fish/config.fish.local
+
+if test (which nvim)
+    function vi
+        nvim $argv
+    end
+end
 
 for snippet in conf.d/*
     source $snippet
