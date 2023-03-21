@@ -77,6 +77,15 @@ require('packer').startup(function(use)
 
   use 'windwp/nvim-ts-autotag'
 
+  vim.g.neoformat_try_node_exe = true
+  use 'sbdchd/neoformat'
+  vim.cmd([[
+    augroup fmt
+      autocmd!
+      autocmd BufWritePre * undojoin | Neoformat
+    augroup END
+  ]])
+
   use 'tpope/vim-rails'
 
   if is_bootstrap then
