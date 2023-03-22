@@ -42,7 +42,12 @@ require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
 
-  use 'nvim-tree/nvim-web-devicons'
+  use {
+    'nvim-tree/nvim-web-devicons',
+    config = function()
+      require('nvim-web-devicons').setup()
+    end
+  } 
 
   -- Git related plugins
   use 'tpope/vim-fugitive'
@@ -50,7 +55,21 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use {
+    'nvim-lualine/lualine.nvim', -- Fancier statusline
+      config = function()
+        -- Set lualine as statusline
+        -- See `:help lualine.txt`
+        require('lualine').setup {
+          options = {
+            icons_enabled = false,
+          },
+          sections = {
+            lualine_c = { { 'filename', path = 1, } },
+          },
+        }
+      end
+  }
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use {
       'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
@@ -64,7 +83,16 @@ require('packer').startup(function(use)
   use 'svermeulen/vim-subversive'
 
   -- Fuzzy Finder (files, lsp, etc)
-  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+  use {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      -- [[ Configure Telescope ]]
+      -- See `:help telescope` and `:help telescope.setup()`
+      require('telescope').setup()
+    end
+  }
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
