@@ -52,7 +52,12 @@ require('packer').startup(function(use)
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
+  use {
+      'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
+      config = function()
+          require('Comment').setup()
+      end
+  }
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use 'farmergreg/vim-lastplace'
   use 'tpope/vim-unimpaired'
