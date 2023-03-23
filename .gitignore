@@ -4,3 +4,4 @@ fish/.config/fish/functions/
 fish/.config/fish/completions/
 iterm2/.iterm2
 Brewfile.lock.json
+kitty/.config/kitty/kitty.conf.bak
