@@ -193,7 +193,11 @@ require('packer').startup(function(use)
             icons_enabled = false,
           },
           sections = {
-            lualine_c = { { 'filename', path = 1, } },
+            lualine_a = { { 'filename', path = 1 } },
+            lualine_b = { 'location', 'progress' },
+            lualine_c = { 'searchcount' },
+            lualine_y = { 'diff' },
+            lualine_z = { 'branch' },
           },
         }
       end
