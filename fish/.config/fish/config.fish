@@ -10,7 +10,7 @@ if not functions -q fisher
     fish -c fisher
 end
 
-test -e {$HOME}/.config/fish/config.fish.local ; and source {$HOME}/.config/fish/config.fish.local
+test -e {$HOME}/.config/fish/config.fish.local; and source {$HOME}/.config/fish/config.fish.local
 
 if test (which nvim)
     function vi
@@ -18,13 +18,17 @@ if test (which nvim)
     end
 end
 
+function e2e
+    CYPRESS_BASE_URL=https://collide-pr-$argv[1].herokuapp.com REACT_APP_API_ROOT_PATH=https://api.staging-v3.powernoodle.com npx cypress $argv[2]
+end
+
 for snippet in conf.d/*
     source $snippet
 end
 
 if test -e /usr/local/opt/asdf/libexec/asdf.fish
-	source /usr/local/opt/asdf/libexec/asdf.fish
+    source /usr/local/opt/asdf/libexec/asdf.fish
 end
 if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
-	source /opt/homebrew/opt/asdf/libexec/asdf.fish
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
