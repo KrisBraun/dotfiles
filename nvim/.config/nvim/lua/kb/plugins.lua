@@ -123,16 +123,6 @@ require('packer').startup(function(use)
         },
       }
 
-      if next(vim.fn.argv()) == nil then
-        vim.cmd([[
-          augroup startup
-            autocmd!
-            autocmd VimEnter * Telescope oldfiles
-          augroup end
-        ]])
-      end
-
-
       -- Ensure the servers above are installed
       local mason_lspconfig = require 'mason-lspconfig'
       mason_lspconfig.setup {
@@ -185,22 +175,22 @@ require('packer').startup(function(use)
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use {
     'nvim-lualine/lualine.nvim', -- Fancier statusline
-      config = function()
-        -- Set lualine as statusline
-        -- See `:help lualine.txt`
-        require('lualine').setup {
-          options = {
-            icons_enabled = false,
-          },
-          sections = {
-            lualine_a = { { 'filename', path = 1 } },
-            lualine_b = { 'location', 'progress' },
-            lualine_c = { 'searchcount' },
-            lualine_y = { 'diff' },
-            lualine_z = { 'branch' },
-          },
-        }
-      end
+    config = function()
+      -- Set lualine as statusline
+      -- See `:help lualine.txt`
+      require('lualine').setup {
+        options = {
+          icons_enabled = false,
+        },
+        sections = {
+          lualine_a = { { 'filename', path = 1 } },
+          lualine_b = { 'location', 'progress' },
+          lualine_c = { 'searchcount' },
+          lualine_y = { 'diff' },
+          lualine_z = { 'branch' },
+        },
+      }
+    end
   }
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use {
