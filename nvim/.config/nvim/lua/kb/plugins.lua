@@ -179,9 +179,6 @@ require('packer').startup(function(use)
       -- Set lualine as statusline
       -- See `:help lualine.txt`
       require('lualine').setup {
-        options = {
-          icons_enabled = false,
-        },
         sections = {
           lualine_a = { { 'filename', path = 1 } },
           lualine_b = { 'location', 'progress' },

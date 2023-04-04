@@ -1,8 +1,5 @@
 vim.opt.shell = '/bin/bash'
 
--- Set highlight on search
-vim.o.hlsearch = false
-
 -- Make line numbers default
 vim.wo.number = true
 
@@ -69,5 +66,4 @@ vim.opt.guicursor = 'n-v-c:hor20,i-ci:ver25,r-cr:hor20'
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 
-vim.opt.hlsearch = true
 vim.cmd([[highlight Search guibg=guibg guifg=guifg gui=bold,underline]])
