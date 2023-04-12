@@ -199,6 +199,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use 'farmergreg/vim-lastplace'
   use 'tpope/vim-unimpaired'
+  use 'AndrewRadev/tagalong.vim'
   use 'svermeulen/vim-subversive'
 
   -- Fuzzy Finder (files, lsp, etc)

@@ -67,3 +67,5 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 
 vim.cmd([[highlight Search guibg=guibg guifg=guifg gui=bold,underline]])
+
+vim.g.tagalong_additional_filetypes = {'javascript'}
