@@ -170,7 +170,22 @@ require('packer').startup(function(use)
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
-  use 'lewis6991/gitsigns.nvim'
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      -- Gitsigns
+      -- See `:help gitsigns.txt`
+      require('gitsigns').setup {
+        signs = {
+          add = { text = '+' },
+          change = { text = '~' },
+          delete = { text = '_' },
+          topdelete = { text = '‾' },
+          changedelete = { text = '~' },
+        },
+      }
+    end
+  }
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use {
@@ -199,7 +214,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use 'farmergreg/vim-lastplace'
   use 'tpope/vim-unimpaired'
-  use 'AndrewRadev/tagalong.vim'
+  -- use 'AndrewRadev/tagalong.vim'
   use 'svermeulen/vim-subversive'
 
   -- Fuzzy Finder (files, lsp, etc)
