@@ -13,6 +13,7 @@ end
 test -e {$HOME}/.config/fish/config.fish.local; and source {$HOME}/.config/fish/config.fish.local
 
 if test (which nvim)
+    set EDITOR nvim
     function vi
         nvim $argv
     end
