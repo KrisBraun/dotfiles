@@ -31,17 +31,22 @@ vim.o.completeopt = 'menuone,noselect'
 vim.go.jsx_ext_required = 0
 
 vim.opt.path = '.,**'
+
 vim.opt.expandtab = true
 vim.opt.shiftround = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-
 vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.textwidth = 80
+vim.opt.wrap = false
+vim.opt.formatoptions = vim.opt.formatoptions + 'tcq'
+
 vim.opt.incsearch = true
 vim.opt.hidden = true
 vim.opt.wildignorecase = true
+
 if vim.fn.has('unnamedplus') == 1 then
   vim.opt.clipboard = 'unnamedplus'
 else
