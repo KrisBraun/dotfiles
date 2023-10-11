@@ -10,6 +10,8 @@ require('packer').startup(function(use)
     end
   }
 
+  use 'lifepillar/pgsql.vim'
+
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
@@ -32,7 +34,7 @@ require('packer').startup(function(use)
     config = function()
       require('nvim-web-devicons').setup()
     end
-  } 
+  }
 
   -- Git related plugins
   use 'tpope/vim-fugitive'
@@ -166,6 +168,17 @@ require('packer').startup(function(use)
 
   use 'madox2/vim-ai'
 
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    },
+    config = function()
+      require('refactoring').setup()
+    end
+  }
+
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
 
@@ -183,6 +196,11 @@ require('packer').startup(function(use)
       local servers = {
         tsserver = {},
         solargraph = {},
+      }
+      local filetypes = {
+        sqlls = {
+          filetypes = {"sql", "mysql", "pgsql"}
+        },
       }
 
       -- Setup neovim lua configuration
@@ -311,6 +329,7 @@ require('packer').startup(function(use)
           require('lspconfig')[server_name].setup {
             capabilities = capabilities,
             on_attach = on_attach,
+            --filetypes = filetypes[server_name],
             settings = servers[server_name],
           }
         end

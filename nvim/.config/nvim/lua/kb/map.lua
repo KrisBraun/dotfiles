@@ -21,6 +21,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Subversive (replace with paste)
 vim.keymap.set('n', 's', '<plug>(SubversiveSubstitute)')
 vim.keymap.set('x', 's', '<plug>(SubversiveSubstitute)')
+vim.keymap.set('n', 'ss', '<plug>(SubversiveSubstituteLine)')
+vim.keymap.set('n', 'S', '<plug>(SubversiveSubstituteToEndOfLine)')
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
@@ -46,3 +48,6 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sb', require('telescope.builtin').git_branches, { desc = '[S]earch Git [B]ranches' })
 vim.keymap.set('n', '<leader>sc', require('telescope.builtin').git_commits, { desc = '[S]earch Git [C]ommits' })
+
+vim.keymap.set('n', '<leader>g', ':Git<CR>')
+vim.keymap.set('n', '<leader>d', ':Gdiffsplit<CR>')
