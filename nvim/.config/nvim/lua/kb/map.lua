@@ -4,11 +4,6 @@ vim.keymap.set('n', '<C-TAB>', ':cnext<cr>')
 vim.keymap.set('n', ';', ':')
 
 -- [[ Basic Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -51,3 +46,8 @@ vim.keymap.set('n', '<leader>sc', require('telescope.builtin').git_commits, { de
 
 vim.keymap.set('n', '<leader>g', ':Git<CR>')
 vim.keymap.set('n', '<leader>d', ':Gdiffsplit<CR>')
+
+vim.keymap.set('v', '<leader>de', ':!node -e "console.log(decodeURIComponent(process.argv[1]))" -- `cat`<cr>')
+vim.keymap.set('v', '<leader>en', ':!node -e "console.log(encodeURIComponent(process.argv[1]))" -- `cat`<cr>')
+vim.keymap.set('v', '<leader>jp', ':!json_pp<cr>')
+vim.keymap.set('n', '<leader>jp', ':%!json_pp<cr>')

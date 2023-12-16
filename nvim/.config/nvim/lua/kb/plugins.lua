@@ -1,152 +1,140 @@
-require('packer').startup(function(use)
-  -- Package manager
-  use 'wbthomason/packer.nvim'
-
-  use {
+return {
+  {
     "folke/which-key.nvim",
-    config = function()
+    init = function()
       vim.o.timeoutlen = 300
-      require("which-key").setup { }
     end
-  }
+  },
 
-  use 'lifepillar/pgsql.vim'
+  'lifepillar/pgsql.vim',
 
-  use { -- Autocompletion
+  {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp"
+  },
+
+  { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  }
-
-  use { -- Highlight, edit, and navigate code
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+  },
+  { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    run = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
-  }
+    branch = "master", commit = "f2778bd1a28b74adf5b1aa51aa57da85adfa3d16",
+    build = ':TSUpdate',
+  },
 
-  use { -- Additional text objects via treesitter
+  { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
-  }
+    branch = "master", commit = "35a60f093fa15a303874975f963428a5cd24e4a0",
+    dependencies = {'nvim-treesitter'},
+  },
 
-  use {
+  {
     'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('nvim-web-devicons').setup()
-    end
-  }
+  },
 
   -- Git related plugins
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
-  use {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      -- Gitsigns
-      -- See `:help gitsigns.txt`
-      require('gitsigns').setup {
-        signs = {
-          add = { text = '+' },
-          change = { text = '~' },
-          delete = { text = '_' },
-          topdelete = { text = '‾' },
-          changedelete = { text = '~' },
-        },
-      }
-    end
-  }
+  'tpope/vim-fugitive',
+  'tpope/vim-rhubarb',
 
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
-  use {
+  {
+    'lewis6991/gitsigns.nvim',
+    -- Gitsigns
+    -- See `:help gitsigns.txt`
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
+  },
+
+  'navarasu/onedark.nvim',
+  {
     'nvim-lualine/lualine.nvim', -- Fancier statusline
-    config = function()
-      -- Set lualine as statusline
-      -- See `:help lualine.txt`
-      require('lualine').setup {
-        sections = {
-          lualine_a = { { 'filename', path = 1 } },
-          lualine_b = { 'location', 'progress' },
-          lualine_c = { 'searchcount' },
-          lualine_y = { 'diff' },
-          lualine_z = { 'branch' },
-        },
-      }
-    end
-  }
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use {
+    opts = {
+      sections = {
+        lualine_a = { { 'filename', path = 1 } },
+        lualine_b = { 'location', 'progress' },
+        lualine_c = { 'searchcount' },
+        lualine_y = { 'diff' },
+        lualine_z = { 'branch' },
+      },
+    },
+  },
+
+  -- Add indentation guides even on blank lines
+  {
+    'lukas-reineke/indent-blankline.nvim',
+  },
+
+  {
       'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
-      config = function()
-          require('Comment').setup()
-      end
-  }
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
-  use 'farmergreg/vim-lastplace'
-  use 'tpope/vim-unimpaired'
+  },
+
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'farmergreg/vim-lastplace',
+  'tpope/vim-unimpaired',
+  'tpope/vim-surround',
+  'tpope/vim-eunuch',
   -- use 'AndrewRadev/tagalong.vim'
-  use 'svermeulen/vim-subversive'
+  'svermeulen/vim-subversive',
+  'nvim-lua/plenary.nvim',
 
   -- Fuzzy Finder (files, lsp, etc)
-  use {
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      -- [[ Configure Telescope ]]
-      -- See `:help telescope` and `:help telescope.setup()`
-      require('telescope').setup {
-        pickers = {
-          git_branches = {
-            initial_mode = "normal",
-          },
-          oldfiles = {
-            initial_mode = "normal",
-          }
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      pickers = {
+        git_branches = {
+          initial_mode = "normal",
+        },
+        oldfiles = {
+          initial_mode = "normal",
         }
       }
-    end
-  }
+    }
+  },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable 'make' == 1 },
 
-  use({
+  {
     "windwp/nvim-autopairs", -- auto close sybmols
     config = function()
-      -- local Rule = require('nvim-autopairs.rule')
+      local Rule = require('nvim-autopairs.rule')
       local npairs = require('nvim-autopairs')
       npairs.setup({
         map_cr = true, -- send closing symbol to its own line
         check_ts = true, -- use treesitter
       })
-      -- npairs.add_rule(Rule("`","`",{"typescript", "typescriptreact"}))
+      npairs.add_rule(Rule("`","`",{"typescript", "typescriptreact"}))
     end
-  })
+  },
 
-  use 'windwp/nvim-ts-autotag'
+  'windwp/nvim-ts-autotag',
 
-  vim.g.neoformat_try_node_exe = true
-  use 'sbdchd/neoformat'
-  vim.cmd([[
-    augroup fmt
-      autocmd!
-      au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
-    augroup END
-  ]])
+  'sbdchd/neoformat',
 
-  use 'tpope/vim-rails'
+  'tpope/vim-rails',
 
-  use {
+  {
     "zbirenbaum/copilot.lua",
-    config = function()
-      require("copilot").setup {
-        suggestion = { enabled = false }, --, auto_trigger = true, keymap = { accept = "<TAB>"} },
-      }
-    end
-  }
-  use {
+    opts = {
+      suggestion = { enabled = false }, --, auto_trigger = true, keymap = { accept = "<TAB>"} },
+    }
+  },
+  {
     "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
+    dependencies = { "copilot.lua" },
     config = function ()
       require("copilot_cmp").setup {
         formatters = {
@@ -154,54 +142,53 @@ require('packer').startup(function(use)
         },
       }
     end
-  }
+  },
 
-  use {
+  {
     'nvim-tree/nvim-tree.lua',
-    requires = {
+    dependencies = {
       'nvim-tree/nvim-web-devicons', -- optional
     },
     config = function()
       require("nvim-tree").setup {}
     end
-  }
+  },
 
-  use 'madox2/vim-ai'
+  'madox2/vim-ai',
 
-  use {
+  {
     "ThePrimeagen/refactoring.nvim",
-    requires = {
+    dependencies = {
         {"nvim-lua/plenary.nvim"},
         {"nvim-treesitter/nvim-treesitter"}
     },
-    config = function()
-      require('refactoring').setup()
-    end
-  }
+  },
 
-  use { -- LSP Configuration & Plugins
+  { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
 
-    requires = {
+    dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
+      {'j-hui/fidget.nvim', tag = "legacy"},
 
       -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
+
+      'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
       local servers = {
         tsserver = {},
         solargraph = {},
       }
-      local filetypes = {
-        sqlls = {
-          filetypes = {"sql", "mysql", "pgsql"}
-        },
-      }
+      -- local filetypes = {
+      --   sqlls = {
+      --     filetypes = {"sql", "mysql", "pgsql"}
+      --   },
+      -- }
 
       -- Setup neovim lua configuration
       require('neodev').setup()
@@ -335,12 +322,10 @@ require('packer').startup(function(use)
         end
       }
 
+      require'lspconfig'.dartls.setup{}
+
       -- Turn on lsp status information
       require('fidget').setup()
     end
-  }
-
-  if is_bootstrap then
-    require('packer').sync()
-  end
-end)
+  },
+}

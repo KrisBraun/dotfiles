@@ -75,3 +75,12 @@ vim.cmd([[highlight Search guibg=guibg guifg=guifg gui=bold,underline]])
 
 vim.g.tagalong_additional_filetypes = {'javascript'}
 vim.g.sql_type_default = 'pgsql'
+
+vim.g.vim_ai_chat = {
+  options = {
+    model = 'gpt-4'
+  }
+}
+
+vim.g.neoformat_try_node_exe = true
+vim.g.neoformat_run_all_formatters = 1
