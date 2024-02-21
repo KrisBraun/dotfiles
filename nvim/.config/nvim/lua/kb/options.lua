@@ -22,7 +22,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 if vim.fn.has('termguicolors') == 1 then
- vim.opt.termguicolors = true
+  vim.opt.termguicolors = true
 end
 
 -- Set completeopt to have a better completion experience
@@ -40,7 +40,7 @@ vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.textwidth = 80
-vim.opt.wrap = false
+-- vim.opt.wrap = false
 vim.opt.formatoptions = vim.opt.formatoptions + 'tcq'
 
 vim.opt.incsearch = true
@@ -53,7 +53,7 @@ else
   vim.opt.clipboard = 'unnamed'
 end
 
-vim.opt.completeopt:append({noinsert = true})
+vim.opt.completeopt:append({ noinsert = true })
 
 -- vim.opt.backspace = 2
 vim.opt.encoding = 'utf8'
@@ -73,14 +73,14 @@ vim.opt.cursorlineopt = 'number'
 
 vim.cmd([[highlight Search guibg=guibg guifg=guifg gui=bold,underline]])
 
-vim.g.tagalong_additional_filetypes = {'javascript'}
+vim.g.tagalong_additional_filetypes = { 'javascript' }
 vim.g.sql_type_default = 'pgsql'
 
 vim.g.vim_ai_chat = {
   options = {
-    model = 'gpt-4'
+    model = 'gpt-4-turbo-preview'
   }
 }
 
-vim.g.neoformat_try_node_exe = true
-vim.g.neoformat_run_all_formatters = 1
+-- vim.g.neoformat_try_node_exe = true
+-- vim.g.neoformat_run_all_formatters = 1

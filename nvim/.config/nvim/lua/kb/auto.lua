@@ -5,9 +5,11 @@ vim.cmd([[
   augroup end
 ]])
 
-vim.cmd([[
-  augroup fmt
-    autocmd!
-    au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
-  augroup END
-]])
+vim.api.nvim_create_autocmd({ "TextChanged" }, {
+  callback = function()
+    local lint_status, lint = pcall(require, "lint")
+    if lint_status then
+      lint.try_lint()
+    end
+  end,
+})

@@ -23,20 +23,13 @@ require('onedark').setup {
   style = 'warm',
 }
 require('onedark').load()
+-- vim.cmd.colorscheme "catppuccin"
 
 require('kb.options')
-require('kb.map')
 require('kb.auto')
 require('kb.treesitter')
-
--- if next(vim.fn.argv()) == nil then
---   vim.cmd([[
---     augroup startup
---       autocmd!
---       autocmd VimEnter * Telescope oldfiles
---     augroup end
---   ]])
--- end
+require('kb.lsp')
+require('kb.map')
 
 -- See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -26,7 +26,8 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader><tab>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -42,12 +43,19 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sb', require('telescope.builtin').git_branches, { desc = '[S]earch Git [B]ranches' })
-vim.keymap.set('n', '<leader>sc', require('telescope.builtin').git_commits, { desc = '[S]earch Git [C]ommits' })
+vim.keymap.set('n', '<leader>sc', ':Easypick changed_files<cr>', { desc = '[S]earch [C]hanged Git Files' })
+vim.keymap.set('n', '<leader>ss', require('telescope.builtin').lsp_document_symbols,
+  { desc = '[S]earch Workspace [S]ymbols' })
+vim.keymap.set('n', '<leader>sr', ':Telescope resume<cr>')
 
-vim.keymap.set('n', '<leader>g', ':Git<CR>')
+vim.keymap.set('n', '<leader>g', ':LazyGit<CR>')
 vim.keymap.set('n', '<leader>d', ':Gdiffsplit<CR>')
 
 vim.keymap.set('v', '<leader>de', ':!node -e "console.log(decodeURIComponent(process.argv[1]))" -- `cat`<cr>')
 vim.keymap.set('v', '<leader>en', ':!node -e "console.log(encodeURIComponent(process.argv[1]))" -- `cat`<cr>')
 vim.keymap.set('v', '<leader>jp', ':!json_pp<cr>')
 vim.keymap.set('n', '<leader>jp', ':%!json_pp<cr>')
+
+vim.keymap.set('n', '<leader>ws', ':split<cr>')
+vim.keymap.set('n', '<leader>wv', ':vsplit<cr>')
+vim.keymap.set('n', '<leader>wc', ':close<cr>')
