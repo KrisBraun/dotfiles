@@ -28,8 +28,6 @@ end
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-vim.go.jsx_ext_required = 0
-
 vim.opt.path = '.,**'
 
 vim.opt.expandtab = true
@@ -78,7 +76,7 @@ vim.g.sql_type_default = 'pgsql'
 
 vim.g.vim_ai_chat = {
   options = {
-    model = 'gpt-4-turbo-preview'
+    model = 'gpt-4o'
   }
 }
 
