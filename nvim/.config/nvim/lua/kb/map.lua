@@ -46,7 +46,7 @@ vim.keymap.set('n', '<leader>sb', require('telescope.builtin').git_branches, { d
 vim.keymap.set('n', '<leader>sc', ':Easypick changed_files<cr>', { desc = '[S]earch [C]hanged Git Files' })
 vim.keymap.set('n', '<leader>ss', require('telescope.builtin').lsp_document_symbols,
   { desc = '[S]earch Workspace [S]ymbols' })
-vim.keymap.set('n', '<leader>sr', ':Telescope resume<cr>')
+vim.keymap.set('n', '<leader>sr', ':Telescope resume initial_mode="normal"<cr>')
 
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>')
 vim.keymap.set('n', '<leader>d', ':Gdiffsplit<CR>')
