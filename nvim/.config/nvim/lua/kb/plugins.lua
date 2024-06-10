@@ -29,16 +29,16 @@ return {
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    branch = "master",
-    commit = "f2778bd1a28b74adf5b1aa51aa57da85adfa3d16",
+    -- branch = "master",
+    -- commit = "f2778bd1a28b74adf5b1aa51aa57da85adfa3d16",
     build = ':TSUpdate',
   },
 
   {
     -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
-    branch = "master",
-    commit = "35a60f093fa15a303874975f963428a5cd24e4a0",
+    -- branch = "master",
+    -- commit = "35a60f093fa15a303874975f963428a5cd24e4a0",
     dependencies = { 'nvim-treesitter' },
   },
 
@@ -101,6 +101,7 @@ return {
 
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'farmergreg/vim-lastplace',
+  'tpope/vim-repeat',
   'tpope/vim-unimpaired',
   'tpope/vim-surround',
   'tpope/vim-eunuch',
@@ -164,15 +165,16 @@ return {
   },
 
   'windwp/nvim-ts-autotag',
+
   {
     "mfussenegger/nvim-lint",
     config = function()
       local lint = require("lint")
       lint.linters_by_ft = {
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
+        javascript = { "eslint" },
+        typescript = { "eslint" },
+        javascriptreact = { "eslint" },
+        typescriptreact = { "eslint" },
       }
     end
   },
@@ -201,11 +203,11 @@ return {
         dart = { "dart_format" },
         html = { "djlint" },
         lua = { "stylua" },
-        javascript = { "prettierd", "eslint_d" },
-        json = { { "prettierd" } },
+        javascript = { "prettierd" },
+        json = { { "fixjson" } },
         sql = { "pg_format" },
-        typescript = { "prettierd", "eslint_d" },
-        typescriptreact = { "prettierd", "eslint_d" },
+        typescript = { "prettierd" },
+        typescriptreact = { "prettierd" },
         xml = { 'xmllint' },
       },
       -- Set up format-on-save
@@ -221,6 +223,18 @@ return {
       -- If you want the formatexpr, here is the place to set it
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
+  },
+
+  {
+    'code-biscuits/nvim-biscuits',
+    requires = {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+    },
+    opts = {
+      ensure_installed = "maintained",
+      cursor_line_only = true,
+    }
   },
 
   'tpope/vim-rails',
