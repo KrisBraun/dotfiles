@@ -46,7 +46,8 @@ vim.keymap.set('n', '<leader>sb', require('telescope.builtin').git_branches, { d
 vim.keymap.set('n', '<leader>sc', ':Easypick changed_files<cr>', { desc = '[S]earch [C]hanged Git Files' })
 vim.keymap.set('n', '<leader>ss', require('telescope.builtin').lsp_document_symbols,
   { desc = '[S]earch Workspace [S]ymbols' })
-vim.keymap.set('n', '<leader>sr', ':Telescope resume initial_mode="normal"<cr>')
+vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>sr', ':Telescope resume initial_mode=normal<cr>')
 
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>')
 vim.keymap.set('n', '<leader>d', ':Gdiffsplit<CR>')
@@ -59,3 +60,10 @@ vim.keymap.set('n', '<leader>jp', ':%!json_pp<cr>')
 vim.keymap.set('n', '<leader>ws', ':split<cr>')
 vim.keymap.set('n', '<leader>wv', ':vsplit<cr>')
 vim.keymap.set('n', '<leader>wc', ':close<cr>')
+vim.keymap.set('n', '<leader>x', ':close<cr>')
+
+vim.keymap.set('n', '<leader>cc', ':GpChatToggle popup<cr>')
+vim.keymap.set('v', '<leader>cc', ':GpChatToggle popup<cr>')
+vim.keymap.set('v', '<leader>cp', ':GpChatPaste popup<cr>')
+vim.keymap.set('n', '<leader>cn', ':GpChatNew popup<cr>')
+vim.keymap.set('v', '<leader>cf', ':GpChatFinder<cr>')

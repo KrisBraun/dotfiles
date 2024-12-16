@@ -76,7 +76,7 @@ vim.g.sql_type_default = 'pgsql'
 
 vim.g.vim_ai_chat = {
   options = {
-    model = 'gpt-4o'
+    model = 'gpt-4o',
   }
 }
 

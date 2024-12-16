@@ -21,11 +21,58 @@ return {
   },
 
   {
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'petertriho/cmp-git',
-      'hrsh7th/cmp-path' },
+    'saghen/blink.cmp',
+    lazy = false, -- lazy loading handled internally
+    -- optional: provides snippets for the snippet source
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      'L3MON4D3/LuaSnip',
+    },
+    -- use a release tag to download pre-built binaries
+    version = 'v0.*',
+    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = {
+        preset = 'enter',
+      },
+      appearance = {
+        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- Useful for when your theme doesn't support blink.cmp
+        -- will be removed in a future release
+        use_nvim_cmp_as_default = true,
+        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = 'mono'
+      },
+      snippets = {
+        expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+        active = function(filter)
+          if filter and filter.direction then
+            return require('luasnip').jumpable(filter.direction)
+          end
+          return require('luasnip').in_snippet()
+        end,
+        jump = function(direction) require('luasnip').jump(direction) end,
+      },
+      -- default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, via `opts_extend`
+      sources = {
+        default = { "lsp", "path", "luasnip", "buffer" },
+      },
+      -- experimental signature help support
+      -- signature = { enabled = true }
+    },
+    -- allows extending the providers array elsewhere in your config
+    -- without having to redefine it
+    opts_extend = { "sources.default" }
   },
+
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -117,10 +164,10 @@ return {
     opts = {
       pickers = {
         git_branches = {
-          initial_mode = "normal",
+          initial_mode = 'normal',
         },
         oldfiles = {
-          initial_mode = "normal",
+          initial_mode = 'normal',
         },
       }
     }
@@ -246,25 +293,25 @@ return {
 
   {
     "zbirenbaum/copilot.lua",
-    -- opts = {
-    --   suggestion = { enabled = true }, auto_trigger = true, keymap = { accept = "<TAB>" },
-    -- }
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup({})
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup {
-        formatters = {
-          insert_text = require("copilot_cmp.format").remove_existing
+      require("copilot").setup({
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          hide_during_completion = true,
+          debounce = 75,
+          keymap = {
+            accept = "<TAB>",
+            accept_word = false,
+            accept_line = false,
+            next = "<S-TAB>",
+          },
         },
-      }
-    end
+        panel = { enabled = false },
+      })
+    end,
   },
 
   {
@@ -280,25 +327,61 @@ return {
   'madox2/vim-ai',
 
   {
+    "robitx/gp.nvim",
+    config = function()
+      local conf = {
+        openai_api_key = { "cat", "/Users/kris.braun/.config/openai.token" },
+        chat_template = "# topic: ?\n\n"
+            .. "- file: %s\n"
+            .. "---\n"
+            .. "🗨: ",
+        chat_free_cursor = true,
+        chat_shortcut_respond = { modes = { "n", "v", "x" }, shortcut = "<leader><leader>" },
+        chat_shortcut_delete = { modes = { "n", "v", "x" }, shortcut = "<leader>cd" },
+        chat_shortcut_stop = { modes = { "n", "v", "x" }, shortcut = "<leader>cs" },
+      }
+      require("gp").setup(conf)
+
+      -- Setup shortcuts here (see Usage > Shortcuts in the Documentation/Readme)
+    end,
+  },
+
+  {
     "ThePrimeagen/refactoring.nvim",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" }
     },
   },
+  -- LSP servers and clients communicate which features they support through "capabilities".
+  --  By default, Neovim supports a subset of the LSP specification.
+  --  With blink.cmp, Neovim has *more* capabilities which are communicated to the LSP servers.
+  --  Explanation from TJ: https://youtu.be/m8C0Cq9Uv9o?t=1275
+  --
+  -- This can vary by config, but in general for nvim-lspconfig:
 
   {
-    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Useful status updates for LSP
       { 'j-hui/fidget.nvim', tag = "legacy" },
-
-      -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
-
-      'hrsh7th/cmp-nvim-lsp',
+      'saghen/blink.cmp',
     },
+    -- example using `opts` for defining servers
+    opts = {
+      servers = {
+        lua_ls = {}
+      }
+    },
+    config = function(_, opts)
+      local lspconfig = require('lspconfig')
+      for server, config in pairs(opts.servers) do
+        -- passing config.capabilities to blink.cmp merges with the capabilities in your
+        -- `opts[server].capabilities, if you've defined it
+        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
+    end
   },
 
   {
@@ -330,11 +413,4 @@ return {
       transparent_background = false,
     }
   }
-  -- {
-  --     'goolord/alpha-nvim',
-  --     dependencies = { 'nvim-tree/nvim-web-devicons' },
-  --     config = function ()
-  --         require'alpha'.setup(require'alpha.themes.startify'.config)
-  --     end
-  -- }
 }
