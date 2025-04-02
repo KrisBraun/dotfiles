@@ -36,7 +36,24 @@ return {
             command = paths.flutter_bin,
             args = { "debug-adapter" },
           }
-          dap.configurations.dart = {}
+          dap.configurations.dart = {
+            {
+              type = "dart",
+              request = "launch",
+              name = "Launch Flutter App",
+              -- Need to find a way to make this dyanmic
+              program = "${workspaceFolder}/apps/plot/lib/main.dart",
+              cwd = "${workspaceFolder}/apps/plot",
+            },
+            {
+              type = "dart",
+              request = "attach",
+              name = "Attach Flutter App",
+              -- Need to find a way to make this dyanmic
+              -- program = "${workspaceFolder}/apps/plot/lib/main.dart",
+              cwd = "${workspaceFolder}/apps/plot",
+            },
+          }
           require("dap.ext.vscode").load_launchjs()
         end,
       },
