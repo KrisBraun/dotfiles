@@ -8,7 +8,7 @@ return {
         ":Gdiffsplit<CR>",
         mode = { "n", "x", "o" },
         desc = "Open Git Diff (split)",
-        remap = false,
+        remap = true,
       },
       {
         "<leader>gD",
