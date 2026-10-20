@@ -6,7 +6,11 @@ return {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
-    config = true,
+    config = function(_, opts)
+      require("flutter-tools").setup(opts)
+      -- flutter-tools' own document colors are deprecated on Neovim 0.12+
+      vim.lsp.document_color.enable()
+    end,
     opts = {
       flutter_path = nil,
       flutter_lookup_cmd = "asdf where flutter",
@@ -22,9 +26,6 @@ return {
           renamefileswithclasses = "prompt",
           updateimportsonrename = true,
           enablesnippets = false,
-        },
-        color = {
-          enabled = true,
         },
       },
       dev_log = {
