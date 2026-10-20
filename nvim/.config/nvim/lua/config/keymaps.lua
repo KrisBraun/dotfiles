@@ -29,7 +29,26 @@ end, { desc = "Linear Issue Details" })
 map("n", "<leader>'", vim.diagnostic.open_float, { desc = "Show diagnostics under the cursor" })
 
 -- Telescope
-map("n", "<leader>sr", function()
-  Snacks.picker.resume()
+vim.keymap.set("n", "<leader>sr", function()
+  Snacks.picker.actions.focus_list(Snacks.picker.resume())
 end, { desc = "Resume" })
-vim.keymap.set("n", "<leader>ff", "<leader>fF", { desc = "Resume", remap = true })
+vim.keymap.set("n", "<leader>ff", "<leader>fF", { desc = "Search Files", remap = true })
+
+-- Git
+vim.keymap.set("n", "<leader>gd", ":Gdiffsplit<CR>", { desc = "Open Git Diff (split)" })
+vim.keymap.set("n", "<leader>gD", function()
+  Snacks.picker.git_diff()
+end, { desc = "Open Git Diff (hunks)" })
+
+-- Current path
+vim.api.nvim_create_user_command("Cppath", function()
+  -- Get absolute path of current file and cwd
+  local abs_path = vim.fn.expand("%:p")
+  local cwd = vim.fn.getcwd()
+  -- Make relative path
+  local rel_path = vim.fn.fnamemodify(abs_path, ":.:" .. cwd)
+  vim.fn.setreg("+", rel_path)
+  vim.notify('Copied "' .. rel_path .. '" to the clipboard!')
+end, {})
+
+vim.keymap.set("n", "<D-C>", "<cmd>Cppath<cr>", { desc = "Copy relative file path to clipboard" })

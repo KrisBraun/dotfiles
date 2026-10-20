@@ -23,9 +23,21 @@ return {
           updateimportsonrename = true,
           enablesnippets = false,
         },
+        color = {
+          enabled = true,
+        },
+      },
+      dev_log = {
+        enabled = true,
+        filter = nil, -- optional callback to filter the log
+        -- takes a log_line as string argument; returns a boolean or nil;
+        -- the log_line is only added to the output if the function returns true
+        notify_errors = false, -- if there is an error whilst running then notify the user
+        open_cmd = "15split", -- command to use to open the log buffer
+        focus_on_open = true, -- focus on the newly opened log window
       },
       debugger = {
-        enabled = true,
+        enabled = false,
         run_via_dap = true,
         exception_breakpoints = {},
         register_configurations = function(paths)
@@ -36,27 +48,16 @@ return {
             command = paths.flutter_bin,
             args = { "debug-adapter" },
           }
-          dap.configurations.dart = {
-            {
-              type = "dart",
-              request = "launch",
-              name = "Launch Flutter App",
-              -- Need to find a way to make this dyanmic
-              program = "${workspaceFolder}/apps/plot/lib/main.dart",
-              cwd = "${workspaceFolder}/apps/plot",
-            },
-            {
-              type = "dart",
-              request = "attach",
-              name = "Attach Flutter App",
-              -- Need to find a way to make this dyanmic
-              -- program = "${workspaceFolder}/apps/plot/lib/main.dart",
-              cwd = "${workspaceFolder}/apps/plot",
-            },
-          }
           require("dap.ext.vscode").load_launchjs()
         end,
       },
+    },
+    keys = {
+      { "<leader>yl", "<cmd>FlutterLogToggle<CR>", desc = "Flutter Log Toggle" },
+      { "<leader>yc", "<cmd>FlutterLogClear<CR>", desc = "Flutter Log Clear" },
+      { "<leader>yr", "<cmd>FlutterRestart<CR>", desc = "Flutter Restart" },
+      { "<leader>yR", "<cmd>FlutterRun<CR>", desc = "Flutter Run" },
+      { "<leader>yt", "<cmd>FlutterCopyProfilerUrl<CR>", desc = "Flutter Copy Profile URL" },
     },
   },
 }
