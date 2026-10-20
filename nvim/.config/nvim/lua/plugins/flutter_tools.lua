@@ -49,7 +49,6 @@ return {
             command = paths.flutter_bin,
             args = { "debug-adapter" },
           }
-          require("dap.ext.vscode").load_launchjs()
         end,
       },
     },
