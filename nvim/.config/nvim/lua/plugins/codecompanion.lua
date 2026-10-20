@@ -5,7 +5,7 @@ return {
       "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
     },
     cmd = "MCPHub",
-    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module"ravitemer/mcphub.nvim",
+    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
     keys = {
       { "<leader>am", "<cmd>MCPHub<cr>", mode = "n", desc = "MCPHub" },
     },
@@ -23,6 +23,7 @@ return {
   -- },
   {
     "olimorris/codecompanion.nvim",
+    commit = "dfc85fe9299c36a6054ca2318ca0e9ee48f5446b", -- pinned until the post-0.11 breaking changes are migrated
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
