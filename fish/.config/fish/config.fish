@@ -1,7 +1,13 @@
 if test -e /usr/local/bin/brew
     eval (/usr/local/bin/brew shellenv)
 else
-    eval (/opt/homebrew/bin/brew shellenv)
+    set -gx HOMEBREW_PREFIX /opt/homebrew
+    set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
+    set -gx HOMEBREW_REPOSITORY /opt/homebrew
+    ! set -q MANPATH; and set MANPATH ''
+    set -gx MANPATH /opt/homebrew/share/man $MANPATH
+    ! set -q INFOPATH; and set INFOPATH ''
+    set -gx INFOPATH /opt/homebrew/share/info $INFOPATH
 end
 
 if not functions -q fisher
@@ -12,11 +18,14 @@ end
 
 test -e {$HOME}/.config/fish/config.fish.local; and source {$HOME}/.config/fish/config.fish.local
 
-if test (which nvim)
-    set EDITOR nvim
-    function vi
-        nvim $argv
-    end
+set -g EDITOR nvim
+function vi
+    set -x OPENAI_API_KEY (cat ~/.config/openai.token)
+    nvim $argv
+end
+
+function p
+    pnpm $argv
 end
 
 function e2e
@@ -27,9 +36,16 @@ for snippet in conf.d/*
     source $snippet
 end
 
-if test -e /usr/local/opt/asdf/libexec/asdf.fish
-    source /usr/local/opt/asdf/libexec/asdf.fish
+alias plot-local 'set -gx PLOT_API_URL http://localhost:8787; set -gx PLOT_SITE_URL http://localhost:5173'
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source ~/.asdf/plugins/java/set-java-home.fish
+
+# pnpm
+set -gx PNPM_HOME "/Users/kris.braun/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
-if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
-    source /opt/homebrew/opt/asdf/libexec/asdf.fish
-end
+# pnpm end
+

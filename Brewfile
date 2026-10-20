@@ -1,8 +1,11 @@
+tap "adoptopenjdk/openjdk"
 tap "github/gh"
+tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "homebrew/services"
 tap "universal-ctags/universal-ctags"
 brew "coreutils"
 brew "asdf"
@@ -18,14 +21,18 @@ brew "glib"
 brew "httpie"
 brew "shared-mime-info"
 brew "libheif"
-brew "python@3.9"
 brew "imagemagick"
+brew "libksba"
 brew "lua-language-server"
 brew "mackup"
+brew "mailhog", restart_service: true
 brew "mas"
 brew "neovim"
-brew "node"
+brew "openvpn"
+brew "postgresql@14", restart_service: true
 brew "python@3.10"
+brew "python@3.9"
+brew "redis", restart_service: true
 brew "rename"
 brew "ripgrep"
 brew "stow"
@@ -33,24 +40,29 @@ brew "terraform"
 brew "the_silver_searcher"
 brew "wget"
 brew "wimlib"
+brew "zlib"
+brew "heroku/brew/heroku"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "1password"
 cask "1password-cli"
+cask "adoptopenjdk11"
 cask "alfred"
 cask "amethyst"
+cask "dbeaver-community"
 cask "font-fira-code"
+cask "font-fira-code-nerd-font"
+cask "font-symbols-only-nerd-font"
+cask "google-chrome"
 cask "google-drive"
 cask "kitty"
 cask "notion"
+cask "slack"
 cask "todoist"
 cask "zoom"
-mas "Be Focused", id: 973134470
-mas "Be Focused Pro", id: 961632517
-mas "Deckset", id: 847496013
-mas "Gifox", id: 1461845568
+mas "Flow", id: 1423210932
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
 mas "Irvue", id: 1039633667
-mas "Mini Calendar", id: 1088779979
-mas "Simplenote", id: 692867256
-mas "Slack", id: 803453959
-mas "Webcam Settings", id: 533696630
-mas "Xcode", id: 497799835
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541

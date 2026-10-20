@@ -1,6 +1,6 @@
 *.sw?
-tags
-tags.*
 .nvimrc
 .DS_Store
-.claude
+.claude/settings.local.json
+.claude/plans/
+.claude/.cache/
