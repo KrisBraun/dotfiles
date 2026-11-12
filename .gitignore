@@ -1,8 +1,45 @@
-*.swp
-tags
+# This repo is PUBLIC. Secrets live in ~/.zshrc.local and other untracked files,
+# which backup.sh saves into an encrypted secrets.dmg.
+
+# --- Secrets: never commit ---
+.zshrc.local
+.env
+.env.*
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.token
+*.mobileprovision
+*.provisionprofile
+id_rsa*
+id_ed25519*
+*credentials*
+.netrc
+.npmrc
+
+# --- Runtime data apps write into stowed (symlinked) folders ---
+# Zed: keep settings/keymap/tasks; ignore conversations, embeddings, prompts db, temp files.
+zed/.config/zed/*
+!zed/.config/zed/settings.json
+!zed/.config/zed/keymap.json
+!zed/.config/zed/tasks.json
+karabiner/.config/karabiner/automatic_backups/
+kitty/.config/kitty/kitty.conf.bak
 fish/.config/fish/functions/
 fish/.config/fish/completions/
 iterm2/.iterm2
-Brewfile.lock.json
-kitty/.config/kitty/kitty.conf.bak
 .luarc.json
+
+# --- Generated ---
+Brewfile.lock.json
+Brewfile.current
+tags
+*.swp
+*.bak
+
+# --- macOS ---
+.DS_Store

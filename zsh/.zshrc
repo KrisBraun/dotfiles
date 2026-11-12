@@ -24,14 +24,25 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 # --- ASDF ---
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-. ~/.asdf/plugins/java/set-java-home.zsh
-# Speed: set-java-home.zsh registers asdf_update_java_home as a *precmd* hook, so it
-# forks `asdf which java` before every single prompt. Resolve JAVA_HOME only when the
-# directory actually changes (chpwd) instead, and once now for the initial directory.
-add-zsh-hook -d precmd asdf_update_java_home
-add-zsh-hook chpwd asdf_update_java_home
-asdf_update_java_home
+[[ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ]] && . /opt/homebrew/opt/asdf/libexec/asdf.sh
+if [[ -f ~/.asdf/plugins/java/set-java-home.zsh ]]; then
+  . ~/.asdf/plugins/java/set-java-home.zsh
+  # Speed: set-java-home.zsh registers asdf_update_java_home as a *precmd* hook, so it
+  # forks `asdf which java` before every single prompt. Resolve JAVA_HOME only when the
+  # directory actually changes (chpwd) instead, and once now for the initial directory.
+  add-zsh-hook -d precmd asdf_update_java_home
+  add-zsh-hook chpwd asdf_update_java_home
+  asdf_update_java_home() {
+    local java_path
+    java_path="$(asdf which java 2>/dev/null)"
+    if [[ -n "${java_path}" ]]; then
+      export JAVA_HOME
+      JAVA_HOME="$(dirname "$(dirname "${java_path:A}")")"
+      export JDK_HOME=${JAVA_HOME}
+    fi
+  }
+  asdf_update_java_home
+fi
 
 # --- PATH (non-ASDF, non-Homebrew managed) ---
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -41,6 +52,7 @@ export PATH="$HOME/.claude/local:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.pub-cache/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
@@ -49,7 +61,7 @@ export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 # Launch nvim with OpenAI API key loaded
 vi() {
-  export OPENAI_API_KEY=$(cat ~/.config/openai.token)
+  export OPENAI_API_KEY=$(cat ~/.config/openai.token 2>/dev/null)
   nvim "$@"
 }
 
@@ -66,25 +78,24 @@ e2e() {
 }
 
 # --- Plot dev ---
-export PLOT_API_URL=http://localhost:8787 PLOT_SITE_URL=http://localhost:5173
-export PLOT_API_URL=http://localhost:8787 PLOT_SITE_URL=http://localhost:5173
+export PLOT_API_URL=http://localhost:8787
+export PLOT_SITE_URL=http://localhost:5173
 alias plot-prod='unset PLOT_API_URL PLOT_SITE_URL'
+
+# --- Perl local::lib (cpan installs into ~/perl5) ---
+if [[ -d ~/perl5 ]]; then
+  export PATH="$HOME/perl5/bin${PATH:+:${PATH}}"
+  export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+  export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+  export PERL_MB_OPT="--install_base \"$HOME/perl5\""
+  export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+fi
+
+# --- Dart CLI completion ---
+[[ -f ~/.dart-cli-completion/zsh-config.zsh ]] && . ~/.dart-cli-completion/zsh-config.zsh || true
 
 # --- Powerlevel10k ---
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# --- Local overrides ---
+# --- Local overrides and secrets (API keys, GITHUB_PAT, ASC IDs): not in this repo ---
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/kris.braun/.dart-cli-completion/zsh-config.zsh ]] && . /Users/kris.braun/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
-
-export GITHUB_PAT=$(cat ~/.github_pat)
-
-PATH="/Users/kris.braun/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/kris.braun/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/kris.braun/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/kris.braun/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/kris.braun/perl5"; export PERL_MM_OPT;
